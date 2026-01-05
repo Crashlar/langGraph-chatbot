@@ -5,3 +5,4 @@ __pycache__
 *.db-shm
 *.db-wal
 chatbot.db-x-checkpoints-3-checkpoint.bin
+chatbot.db-x-checkpoints-21-checkpoint.bin
