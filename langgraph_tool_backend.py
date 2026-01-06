@@ -15,6 +15,8 @@ import requests
 
 
 load_dotenv()
+import os 
+currency_api = os.getenv("EXCHANGE_CURRENCY_RATE")
 
 # -------------------
 # 1. LLM
@@ -26,6 +28,19 @@ llm = ChatGoogleGenerativeAI(model = "gemini-2.5-flash-lite")
 # -------------------
 # Tools
 search_tool = DuckDuckGoSearchRun(region="us-en")
+
+
+@tool
+def get_conversion_factor(base_currency: str, target_currency: str) -> float:
+  """
+  This function fetches the currency conversion factor between a given base currency and a target currency
+  """
+  url = f'https://v6.exchangerate-api.com/v6/{currency_api}/pair/USD/INR'
+
+  response = requests.get(url)
+
+  return response.json()
+
 
 @tool
 def calculator(first_num: float, second_num: float, operation: str) -> dict:
