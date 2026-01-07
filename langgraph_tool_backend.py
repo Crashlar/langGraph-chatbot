@@ -35,7 +35,7 @@ def get_conversion_factor(base_currency: str, target_currency: str) -> float:
   """
   This function fetches the currency conversion factor between a given base currency and a target currency
   """
-  url = f'https://v6.exchangerate-api.com/v6/{currency_api}/pair/USD/INR'
+  url = f'https://v6.exchangerate-api.com/v6/{currency_api}/pair/{base_currency}/{target_currency}'
 
   response = requests.get(url)
 
